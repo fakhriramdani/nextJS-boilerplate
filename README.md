@@ -20,6 +20,28 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Docker
+
+Build dan jalankan lewat container:
+
+```bash
+# Build image
+docker build -t nextjs-boilerplate .
+
+# Jalankan container (port 3000)
+docker run -p 3000:3000 nextjs-boilerplate
+```
+
+Atau pakai docker compose:
+
+```bash
+docker compose up --build
+```
+
+Buka [http://localhost:3000](http://localhost:3000).
+
+Image memakai multi-stage build dari `output: "standalone"` (`.next/standalone`), hanya dependency yang diperlukan, dan berjalan sebagai user non-root (`nextjs`). File `.dockerignore` mengecualikan `node_modules`, `.next`, dan env files agar tidak terbawa ke image.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
